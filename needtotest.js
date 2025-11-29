@@ -285,7 +285,7 @@ const randstrsValue = randstrs(10);
 let headers = {
   ":authority": parsedTarget.host,
   ":scheme": "https",
-  ":path": parsedTarget.path + "?" + randstr(3) + "=" +generateRandomString(10,25),
+  ":path": parsedTarget.path,
   ":method": "GET",
   "pragma" : "no-cache",
   "upgrade-insecure-requests" : "1",

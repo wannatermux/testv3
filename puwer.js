@@ -64,7 +64,7 @@ if (process.argv.length < 7) {
   process.exit();
 }
 
-const secureProtocol = "TLSv1_2_method, TLSv1_3_method";
+const secureProtocol = "TLSv1_2_method", "TLSv1_3_method";
 const headers = {};
 
 const secureContextOptions = {

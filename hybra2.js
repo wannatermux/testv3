@@ -220,14 +220,10 @@ const parsedTarget = url.parse(args.target);
 
 const headerBuilder = {
     userAgent: [
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0",
+
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15",
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-        "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0",
     ],
 
     acceptLang: [
@@ -349,12 +345,14 @@ function http2run() {
     headers[":method"] = "GET";
     headers[":authority"] = parsedTarget.host;
     headers[":scheme"] = "https";
-    headers["x-forwarded-proto"] = "https";
-    headers["accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8";
     headers["accept-encoding"] = "gzip, deflate, br, zstd";
     headers["upgrade-insecure-requests"] = "1";
     headers["sec-fetch-user"] = "?1";
-    headers["x-requested-with"] = "XMLHttpRequest";
+    headers["sec-ch-ua"] = "\"Chromium\";v=\"131\", \"Google Chrome\";v=\"131\", \"Not A(Brand\";v=\"99\"";
+    headers["sec-ch-ua-mobile"] = "?0";
+    headers["sec-ch-ua-platform"] = "\"Windows\"";
+    headers["referer"] = parsedTarget.host;
+    
 
 
     // DYNAMIC
@@ -370,6 +368,7 @@ function http2run() {
     headers["sec-fetch-dest"] = randomElement(headerBuilder.Sec.dest);
     headers["sec-fetch-mode"] = randomElement(headerBuilder.Sec.mode);
     headers["sec-fetch-site"] = randomElement(headerBuilder.Sec.site);
+    headers["accept"] = randomElement(headerBuilder.accept);
     headers["accept-language"] = selectedLanguage;
     
     // EXTRA
